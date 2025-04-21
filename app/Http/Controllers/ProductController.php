@@ -234,7 +234,7 @@ class ProductController extends Controller
         $products = Product::latest()->get();
     }
 
-    return view('frontEnd.product.pricefilter',compact('products'))->render();
+    return view('frontEnd.product.pricefilter',compact('products'))->render(); //wiew render
 
     
 }
