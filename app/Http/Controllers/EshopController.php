@@ -13,7 +13,9 @@ class EshopController extends Controller
     public $categories, $product, $products;
 
     public function index() {
+            //  return $test=  Category::where('status',0)->get();
 //        return DB::table('categories')->get();
+        $category =Category::all();
         return view('frontEnd.home.home', [
             'new_arrival_products' => Product::where('featured_status',1)->get(),
             'explore_products' => Product::where('featured_status',0)->get(),
@@ -25,6 +27,7 @@ class EshopController extends Controller
         ]);
     }
     public function productDetails($id){
+        
         $this->product  = Product::find($id);
         $this->products = Product::where('category_id', $this->product->category_id)->orderBy('id', 'desc')->get();
         return view('frontEnd.product.product-details',[

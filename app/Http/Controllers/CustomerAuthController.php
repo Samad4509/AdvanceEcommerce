@@ -17,8 +17,9 @@ class CustomerAuthController extends Controller
 
     public function loginCheck(Request $request)
     {
-
+        // return $request;
         $this->customer = Customer::where('email', $request->user_id)->first();
+        
         if ($this->customer)
         {
             if (password_verify($request->password, $this->customer->password))
@@ -41,7 +42,6 @@ class CustomerAuthController extends Controller
             }
             return back()->with('message', 'Sorry ... Your password is not valid.');
         }
-
         return back()->with('message', 'Sorry ... Your email or mobile number is not valid.');
     }
 
@@ -50,6 +50,8 @@ class CustomerAuthController extends Controller
     }
 
     public function newRegistration(Request $request){
+
+        // return $request;
 
         $this->validate($request, [
             'name'      => 'required',
@@ -77,7 +79,7 @@ class CustomerAuthController extends Controller
     public function logout(){
         Session::forget('customer_id');
         Session::forget('customer_name');
-       return redirect('/');
+        return redirect('/');
     }
 
 }

@@ -16,7 +16,8 @@
                 <div class="col-lg-2 col-sm-3 col-5">
                     <div class="header-brand">
                         <a href="{{route('home')}}" class="logo logo-dark">
-                            <img src="{{asset('frontend/assets')}}/images/logo/logo.png" alt="Site Logo">
+                            <!-- <img src="{{asset('frontend/assets')}}/images/logo/logo.png" alt="Site Logo"> -->
+                             Demo
                         </a>
                         <a href="{{route('home')}}" class="logo logo-light">
                             <img src="{{asset('frontend/assets')}}/images/logo/logo-light.png" alt="Site Logo">
@@ -71,7 +72,7 @@
                         <nav class="department-nav-menu" id="closeCat">
                             <button class="sidebar-close"><i class="fas fa-times"></i></button>
                             <ul class="nav-menu-list">
-                                @foreach($categories as $category)
+                                @foreach($categoriesnav as $category)
                                 <li>
                                     <a href="{{route('category.products',$category->id)}} " class="nav-link {{count($category->subCategory) > 0 ? 'has-megamenu' : ''}}">
                                         <span class="menu-icon">
@@ -115,46 +116,9 @@
                         <ul class="mainmenu">
                             <li class="menu-item-has-children">
                                 <a href="#">Home</a>
-                                <ul class="axil-submenu">
-                                    <li><a href="index-1.html">Home - Electronics</a></li>
-                                    <li><a href="index-2.html">Home - NFT</a></li>
-                                    <li><a href="index-3.html">Home - Fashion</a></li>
-                                    <li><a href="index-4.html">Home - Jewellery</a></li>
-                                    <li><a href="index-5.html">Home - Furniture</a></li>
-                                    <li><a href="index-7.html">Home - Multipurpose</a></li>
-                                    <li><a href="https://new.axilthemes.com/demo/template/etrade-rtl/">RTL Version</a></li>
-                                </ul>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="#">Shop</a>
-                                <ul class="axil-submenu">
-                                    <li><a href="shop-sidebar.html">Shop With Sidebar</a></li>
-                                    <li><a href="shop.html">Shop no Sidebar</a></li>
-                                    <li><a href="single-product.html">Product Variation 1</a></li>
-                                    <li><a href="single-product-2.html">Product Variation 2</a></li>
-                                    <li><a href="single-product-3.html">Product Variation 3</a></li>
-                                    <li><a href="single-product-4.html">Product Variation 4</a></li>
-                                    <li><a href="single-product-5.html">Product Variation 5</a></li>
-                                    <li><a href="single-product-6.html">Product Variation 6</a></li>
-                                    <li><a href="single-product-7.html">Product Variation 7</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">Pages</a>
-                                <ul class="axil-submenu">
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="my-account.html">Account</a></li>
-                                    <li><a href="sign-up.html">Sign Up</a></li>
-                                    <li><a href="sign-in.html">Sign In</a></li>
-                                    <li><a href="forgot-password.html">Forgot Password</a></li>
-                                    <li><a href="reset-password.html">Reset Password</a></li>
-                                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li><a href="coming-soon.html">Coming Soon</a></li>
-                                    <li><a href="404.html">404 Error</a></li>
-                                    <li><a href="typography.html">Typography</a></li>
-                                </ul>
+                                <a href="{{route('products')}}">Products</a>
                             </li>
                             <li><a href="about-us.html">About</a></li>
                             <li class="menu-item-has-children">
@@ -189,7 +153,7 @@
                         <li class="shopping-cart">
                             <a href="#" class="cart-dropdown-btn">
                                 <span class="cart-count">{{count(Cart::content())}}</span>
-                                <i class="flaticon-shopping-cart"></i>
+                                <i class="flaticon-shopping-cart autoload"></i>
                             </a>
                         </li>
                         <li class="my-account">

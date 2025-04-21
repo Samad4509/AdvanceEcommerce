@@ -36,7 +36,7 @@
                                              <label for="validationCustom011">Category</label>
                                              <select name="category_id" required class="form-control">
                                                  <option value="" disabled selected>Select Category</option>
-                                                 @foreach($categories as $category)
+                                                 @foreach($allcategories as $category)
                                                      <option value="{{$category->id}}">{{$category->name}}</option>
                                                  @endforeach
                                              </select>

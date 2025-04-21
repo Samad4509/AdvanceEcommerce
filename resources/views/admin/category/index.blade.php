@@ -28,7 +28,7 @@
                              <div class="card-body">
                                  <p class="text-success">{{session('message')}}</p>
 
-                                 <form class="needs-validation"  action="{{route('category.create')}}" method="POST">
+                                 <form class="needs-validation"  action="{{route('category.create')}}" method="POST" enctype="multipart/form-data">
                                      @csrf
 
                                      <div class="form-row">
@@ -36,6 +36,13 @@
                                              <label for="category_name">Category name</label>
                                              <input type="text" class="form-control" name="name" id="category_nameasdfas" value="">
                                               <p class="text-danger mt-2">{{$errors->has('name') ? $errors->first('name') : ''}}</p>
+                                         </div>
+                                     </div>
+                                     <div class="form-row">
+                                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                                             <label for="category_name">Category Image</label>
+                                             <input type="file" class="form-control" name="image" id="category_nameasdfas" value="">
+                                              <p class="text-danger mt-2">{{$errors->has('image') ? $errors->first('image') : ''}}</p>
                                          </div>
                                      </div>
                                      <button class="btn btn-primary" type="submit">Submit form</button>

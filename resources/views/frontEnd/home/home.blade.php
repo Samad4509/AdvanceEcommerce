@@ -1,4 +1,7 @@
 @extends('frontEnd.master')
+@section('title')
+Home Page
+@endsection
 @section('content')
     <main class="main-wrapper">
 
@@ -12,38 +15,38 @@
                             <div class="slider-activation-one axil-slick-dots">
                                 <div class="single-slide slick-slide">
                                     <div class="main-slider-content">
-                                        <span class="subtitle"><i class="fal fa-watch"></i> Smartwatch</span>
-                                        <h1 class="title">Bloosom Smat Watch</h1>
+                                    <span class="subtitle"><i class="fal fa-watch"></i> Genuine Care | Start With</span>
+                                        <h1 class="title">GENUINE MEFICEN</h1>
                                         <div class="shop-btn">
                                             <a href="shop.html" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="main-slider-thumb">
-                                        <img src="{{asset('frontend/assets')}}/images/product/product-40.png" alt="Product">
+                                        <img src="{{asset('frontend/assets')}}/images/product/product-400.png" alt="Product">
                                     </div>
                                 </div>
                                 <div class="single-slide slick-slide">
                                     <div class="main-slider-content">
-                                        <span class="subtitle"><i class="fal fa-watch"></i> Smartwatch</span>
-                                        <h1 class="title">Delux Brand Watch</h1>
+                                        <span class="subtitle"><i class="fal fa-watch"></i> Genuine Care | Start With</span>
+                                        <h1 class="title">GENUINE MEFICEN</h1>
                                         <div class="shop-btn">
                                             <a href="shop.html" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="main-slider-thumb">
-                                        <img src="{{asset('frontend/assets')}}/images/product/product-46.png" alt="Product">
+                                        <img src="{{asset('frontend/assets')}}/images/product/product-460.png" alt="Product">
                                     </div>
                                 </div>
                                 <div class="single-slide slick-slide">
                                     <div class="main-slider-content">
-                                        <span class="subtitle"><i class="fal fa-watch"></i> Smartwatch</span>
-                                        <h1 class="title">Bloosom Smat Watch</h1>
+                                    <span class="subtitle"><i class="fal fa-watch"></i> Genuine Care | Start With</span>
+                                        <h1 class="title">GENUINE MEFICEN</h1>
                                         <div class="shop-btn">
                                             <a href="shop.html" class="axil-btn">Shop Now <i class="fal fa-long-arrow-right"></i></a>
                                         </div>
                                     </div>
                                     <div class="main-slider-thumb">
-                                        <img src="{{asset('frontend/assets')}}/images/product/product-40.png" alt="Product">
+                                        <img src="{{asset('frontend/assets')}}/images/product/product-399.png" alt="Product">
                                     </div>
                                 </div>
                             </div>
@@ -53,11 +56,11 @@
                         <div class="slider-product-box">
                             <div class="product-thumb">
                                 <a href="single-product.html">
-                                    <img src="{{asset('frontend/assets')}}/images/product/product-41.png" alt="Product">
+                                    <img src="{{asset('frontend/assets')}}/images/product/product-410.png" alt="Product">
                                 </a>
                             </div>
-                            <h6 class="title"><a href="single-product.html">Yantiti Leather Bags</a></h6>
-                            <span class="price">$29.99</span>
+                            <h6 class="title"><a href="single-product.html">Prosalic Lotion</a></h6>
+                            <!-- <span class="price">$29.99</span> -->
                         </div>
                     </div>
                 </div>
@@ -66,52 +69,25 @@
     </div>
     <!-- End Slider Area -->
 
-    <div class="service-area">
-        <div class="container">
-            <div class="row row-cols-xl-5 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20">
-                <div class="col">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="{{asset('frontend/assets')}}/images/icons/service1.png" alt="Service">
+    <section>
+        <div class="service-area">
+            <div class="container">
+                <h2>Top Categories</h2>
+                <div class="row row-cols-xl-5 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-1 row--20">
+                    @foreach($categories as $category)
+                        <div class="col">
+                            <a href="{{ route('category.products', $category->id) }}" class="nav-link {{ count($category->subCategory) > 0 ? 'has-megamenu' : '' }}">
+                                <div class="service-box p-3 text-center" style="background-color: #F6F7FB; border-radius: 10px;">
+                                    <img src="{{ asset($category->image) }}" alt="{{ $category->name }}" height="100" width="100" class="rounded-circle mb-2">
+                                    <p class="fw-bolder mb-0">{{ $category->name }}</p>
+                                </div>
+                            </a>
                         </div>
-                        <h6 class="title">Fast &amp; Secure Delivery</h6>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="{{asset('frontend/assets')}}/images/icons/service2.png" alt="Service">
-                        </div>
-                        <h6 class="title">100% Guarantee On Product</h6>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="{{asset('frontend/assets')}}/images/icons/service3.png" alt="Service">
-                        </div>
-                        <h6 class="title">24 Hour Return Policy</h6>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="{{asset('frontend/assets')}}/images/icons/service4.png" alt="Service">
-                        </div>
-                        <h6 class="title">24 Hour Return Policy</h6>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="{{asset('frontend/assets')}}/images/icons/service5.png" alt="Service">
-                        </div>
-                        <h6 class="title">Next Level Pro Quality</h6>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Start New Arrivals Product Area  -->
     <div class="axil-new-arrivals-product-area fullwidth-container bg-color-white axil-section-gap pb--0">
@@ -123,8 +99,8 @@
                 </div>
                 <div class="new-arrivals-product-activation slick-layout-wrapper--15 axil-slick-arrow  arrow-top-slide">
                    @foreach($new_arrival_products as $new_arrival_product)
-                    <div class="slick-single-layout">
-                        <div class="axil-product product-style-four">
+                    <div class="slick-single-layout" class="">
+                        <div class="axil-product product-style-four product_data">
                             <div class="thumbnail">
                                 <a href="{{route('product.details',$new_arrival_product->id)}}" target="_blank">
                                     <img data-sal="fade" style="height: 300px" data-sal-delay="100" data-sal-duration="1500" src="{{asset($new_arrival_product->image)}}" alt="Product Images">
@@ -133,10 +109,12 @@
                                     @php($off = (($new_arrival_product->regular_price - $new_arrival_product->selling_price)/$new_arrival_product->regular_price) * 100)
                                     <div class="product-badget">{{ceil($off)}}% OFF</div>
                                 </div>
-                                <div class="product-hover-action">
+                                <input type="hidden" value="{{$new_arrival_product->id}}" class="prod_id">
+                                <input type="number" name="quantity" class="form-control quantity" value="1">
+                                <div>
                                     <ul class="cart-action">
                                         <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                        <li class="select-option"><a href="{{route('cart.direct-add', ['id' => $new_arrival_product->id])}}">Add to Cart</a></li>
+                                        <li class="select-option"><a href="" class="addToCartBtn">Add to Cart</a></li>
                                         <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                     </ul>
                                 </div>
@@ -164,283 +142,6 @@
     </div>
     <!-- End New Arrivals Product Area  -->
 
-    <!-- Start Best Sellers Product Area  -->
-    <div class="axil-best-seller-product-area bg-color-white axil-section-gap pb--50 pb_sm--30">
-        <div class="container">
-            <div class="section-title-wrapper">
-                <span class="title-highlighter highlighter-secondary"><i class="far fa-shopping-basket"></i>This Month</span>
-                <h2 class="title">Best Sellers</h2>
-            </div>
-            <div class="new-arrivals-product-activation-2 product-transparent-layout slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide product-slide-mobile">
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-seven">
-                        <div class="product-content">
-                            <div class="cart-btn">
-                                <a href="cart.html">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </div>
-                            <div class="inner">
-                                <h5 class="title"><a href="single-product.html">Full Sleev Tshirt</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price current-price">$29.99</span>
-                                    <span class="price old-price">$49.99</span>
-                                </div>
-                                <div class="product-rating">
-                                    <span class="icon">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </span>
-                                    <span class="rating-number">(64)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="{{asset('frontend/assets')}}/images/product/fashion/product-16.png" alt="Product Images">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-seven">
-                        <div class="product-content">
-                            <div class="cart-btn">
-                                <a href="cart.html">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </div>
-                            <div class="inner">
-                                <h5 class="title"><a href="single-product.html">Comfort Unisex Hoddie</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price current-price">$29.99</span>
-                                    <span class="price old-price">$49.99</span>
-                                </div>
-                                <div class="product-rating">
-                                    <span class="icon">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </span>
-                                    <span class="rating-number">(44)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="{{asset('frontend/assets')}}/images/product/fashion/product-17.png" alt="Product Images">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-seven">
-                        <div class="product-content">
-                            <div class="cart-btn">
-                                <a href="cart.html">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </div>
-                            <div class="inner">
-                                <h5 class="title"><a href="single-product.html">Stylish Hoddie</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price current-price">$29.99</span>
-                                    <span class="price old-price">$49.99</span>
-                                </div>
-                                <div class="product-rating">
-                                    <span class="icon">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </span>
-                                    <span class="rating-number">(60)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="{{asset('frontend/assets')}}/images/product/fashion/product-18.png" alt="Product Images">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-seven">
-                        <div class="product-content">
-                            <div class="cart-btn">
-                                <a href="cart.html">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </div>
-                            <div class="inner">
-                                <h5 class="title"><a href="single-product.html">Sky Blue T-shirt</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price current-price">$29.99</span>
-                                    <span class="price old-price">$49.99</span>
-                                </div>
-                                <div class="product-rating">
-                                    <span class="icon">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </span>
-                                    <span class="rating-number">(22)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="{{asset('frontend/assets')}}/images/product/fashion/product-19.png" alt="Product Images">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-seven">
-                        <div class="product-content">
-                            <div class="cart-btn">
-                                <a href="cart.html">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </div>
-                            <div class="inner">
-                                <h5 class="title"><a href="single-product.html">Modern Hoddie</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price current-price">$29.99</span>
-                                    <span class="price old-price">$49.99</span>
-                                </div>
-                                <div class="product-rating">
-                                    <span class="icon">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </span>
-                                    <span class="rating-number">(64)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="{{asset('frontend/assets')}}/images/product/fashion/product-20.png" alt="Product Images">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-seven">
-                        <div class="product-content">
-                            <div class="cart-btn">
-                                <a href="cart.html">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </div>
-                            <div class="inner">
-                                <h5 class="title"><a href="single-product.html">Blue T-shirt</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price current-price">$29.99</span>
-                                    <span class="price old-price">$49.99</span>
-                                </div>
-                                <div class="product-rating">
-                                    <span class="icon">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </span>
-                                    <span class="rating-number">(14)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="{{asset('frontend/assets')}}/images/product/fashion/product-21.png" alt="Product Images">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-seven">
-                        <div class="product-content">
-                            <div class="cart-btn">
-                                <a href="cart.html">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </div>
-                            <div class="inner">
-                                <h5 class="title"><a href="single-product.html">Men's Full Sleev T-shirt</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price current-price">$29.99</span>
-                                    <span class="price old-price">$49.99</span>
-                                </div>
-                                <div class="product-rating">
-                                    <span class="icon">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </span>
-                                    <span class="rating-number">(64)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="{{asset('frontend/assets')}}/images/product/fashion/product-22.png" alt="Product Images">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-seven">
-                        <div class="product-content">
-                            <div class="cart-btn">
-                                <a href="cart.html">
-                                    <i class="flaticon-shopping-cart"></i>
-                                </a>
-                            </div>
-                            <div class="inner">
-                                <h5 class="title"><a href="single-product.html">Men's Half Sleev T-shirt</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price current-price">$29.99</span>
-                                    <span class="price old-price">$49.99</span>
-                                </div>
-                                <div class="product-rating">
-                                    <span class="icon">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </span>
-                                    <span class="rating-number">(94)</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="zoom-out" data-sal-delay="100" data-sal-duration="800" loading="lazy" src="{{asset('frontend/assets')}}/images/product/fashion/product-23.png" alt="Product Images">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End  Best Sellers Product Area  -->
-
     <!-- Poster Countdown Area  -->
     <div class="axil-poster-countdown">
         <div class="container">
@@ -458,7 +159,7 @@
                     </div>
                     <div class="col-xl-7 col-lg-6">
                         <div class="poster-countdown-thumbnail">
-                            <img src="{{asset('frontend/assets')}}/images/product/poster/poster-05.png" alt="Poster Product">
+                            <img src="{{asset('frontend/assets')}}/images/product/poster/poster-005.png" alt="Poster Product">
                         </div>
                     </div>
                 </div>
@@ -480,7 +181,7 @@
 
                         @foreach($explore_products as $explore_product)
                         <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30">
-                            <div class="axil-product product-style-one">
+                            <div class="axil-product product-style-one product_data">
                                 <div class="thumbnail">
                                     <a href="{{route('product.details',$explore_product->id)}}" target="_blank">
                                         <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{asset($explore_product->image)}}" alt="Product Images">
@@ -489,11 +190,13 @@
                                         @php($off = (($explore_product->regular_price - $explore_product->selling_price)/$explore_product->regular_price) * 100)
                                         <div class="product-badget">{{ceil($off)}}% OFF</div>
                                     </div>
-                                    <div class="product-hover-action">
+                                    <input type="hidden" value="{{$explore_product->id}}" class="prod_id">
+                                    <input type="number" name="quantity" class="form-control quantity" value="1">
+                                    <div>
                                         <ul class="cart-action">
-                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                            <li class="select-option"><a href="cart.html">Add to Cart</a></li>
                                             <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                            <li class="select-option"><a href="" class="addToCartBtn">Add to Cart</a></li>
+                                            <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -620,333 +323,6 @@
         </div>
     </div>
     <!-- End Testimonila Area  -->
-
-    <!-- Start New Arrivals Product Area  -->
-    <div class="axil-new-arrivals-product-area bg-color-white axil-section-gap pb--50">
-        <div class="container">
-            <div class="section-title-wrapper">
-                <span class="title-highlighter highlighter-primary"><i class="far fa-shopping-basket"></i> This Week’s</span>
-                <h2 class="title">New Arrivals</h2>
-            </div>
-            <div class="new-arrivals-product-activation slick-layout-wrapper--30 axil-slick-arrow  arrow-top-slide">
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-two has-color-pick">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{asset('frontend/assets')}}/images/product/fashion/product-14.png" alt="Product Images">
-                            </a>
-                            <div class="label-block label-right">
-                                <div class="product-badget">50% OFF</div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="inner">
-                                <div class="color-variant-wrapper">
-                                    <ul class="color-variant">
-                                        <li class="color-extra-01 active"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-02"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-03"><span><span class="color"></span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="title"><a href="single-product.html">Full A-Line Dress</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price old-price">$50</span>
-                                    <span class="price current-price">$25</span>
-                                </div>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul class="cart-action justify-content-center">
-                                    <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                    <li class="select-option"><a href="cart.html">Add to Cart</a></li>
-                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .slick-single-layout -->
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-two has-color-pick">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="fade" data-sal-delay="200" data-sal-duration="1500" src="{{asset('frontend/assets')}}/images/product/fashion/product-15.png" alt="Product Images">
-                            </a>
-                            <div class="label-block label-right">
-                                <div class="product-badget">15% OFF</div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="inner">
-                                <div class="color-variant-wrapper">
-                                    <ul class="color-variant">
-                                        <li class="color-extra-01 active"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-02"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-03"><span><span class="color"></span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="title"><a href="single-product.html">Leather Hand Bag</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price old-price">$60</span>
-                                    <span class="price current-price">$45</span>
-                                </div>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul class="cart-action justify-content-center">
-                                    <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                    <li class="select-option"><a href="cart.html">Add to Cart</a></li>
-                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .slick-single-layout -->
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-two has-color-pick">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="fade" data-sal-delay="300" data-sal-duration="1500" src="{{asset('frontend/assets')}}/images/product/fashion/product-4.png" alt="Product Images">
-                            </a>
-                            <div class="label-block label-right">
-                                <div class="product-badget">30% OFF</div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="inner">
-                                <div class="color-variant-wrapper">
-                                    <ul class="color-variant">
-                                        <li class="color-extra-01 active"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-02"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-03"><span><span class="color"></span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="title"><a href="single-product.html">Guys Bomber Jacket</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price old-price">$30</span>
-                                    <span class="price current-price">$20</span>
-                                </div>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul class="cart-action justify-content-center">
-                                    <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                    <li class="select-option"><a href="cart.html">Add to Cart</a></li>
-                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .slick-single-layout -->
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-two has-color-pick">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="fade" data-sal-delay="400" data-sal-duration="1500" src="{{asset('frontend/assets')}}/images/product/fashion/product-5.png" alt="Product Images">
-                            </a>
-                            <div class="label-block label-right">
-                                <div class="product-badget">50% OFF</div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="inner">
-                                <div class="color-variant-wrapper">
-                                    <ul class="color-variant">
-                                        <li class="color-extra-01 active"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-02"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-03"><span><span class="color"></span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="title"><a href="single-product.html">Full A-Line Dress</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price old-price">$50</span>
-                                    <span class="price current-price">$25</span>
-                                </div>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul class="cart-action justify-content-center">
-                                    <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                    <li class="select-option"><a href="cart.html">Add to Cart</a></li>
-                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .slick-single-layout -->
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-two has-color-pick">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{asset('frontend/assets')}}/images/product/fashion/product-10.png" alt="Product Images">
-                            </a>
-                            <div class="label-block label-right">
-                                <div class="product-badget">10% OFF</div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="inner">
-                                <div class="color-variant-wrapper">
-                                    <ul class="color-variant">
-                                        <li class="color-extra-01 active"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-02"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-03"><span><span class="color"></span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="title"><a href="single-product.html">Men's Tshirt</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price old-price">$40</span>
-                                    <span class="price current-price">$30</span>
-                                </div>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul class="cart-action justify-content-center">
-                                    <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                    <li class="select-option"><a href="cart.html">Add to Cart</a></li>
-                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .slick-single-layout -->
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-two has-color-pick">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="fade" data-sal-delay="200" data-sal-duration="1500" src="{{asset('frontend/assets')}}/images/product/fashion/product-11.png" alt="Product Images">
-                            </a>
-                            <div class="label-block label-right">
-                                <div class="product-badget">25% OFF</div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="inner">
-                                <div class="color-variant-wrapper">
-                                    <ul class="color-variant">
-                                        <li class="color-extra-01 active"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-02"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-03"><span><span class="color"></span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="title"><a href="single-product.html">Leather Jacket</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price old-price">$50</span>
-                                    <span class="price current-price">$40</span>
-                                </div>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul class="cart-action justify-content-center">
-                                    <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                    <li class="select-option"><a href="cart.html">Add to Cart</a></li>
-                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .slick-single-layout -->
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-two has-color-pick">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="fade" data-sal-delay="300" data-sal-duration="1500" src="{{asset('frontend/assets')}}/images/product/fashion/product-12.png" alt="Product Images">
-                            </a>
-                            <div class="label-block label-right">
-                                <div class="product-badget">15% OFF</div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="inner">
-                                <div class="color-variant-wrapper">
-                                    <ul class="color-variant">
-                                        <li class="color-extra-01 active"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-02"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-03"><span><span class="color"></span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="title"><a href="single-product.html">Leather Hand Bag</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price old-price">$60</span>
-                                    <span class="price current-price">$45</span>
-                                </div>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul class="cart-action justify-content-center">
-                                    <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                    <li class="select-option"><a href="cart.html">Add to Cart</a></li>
-                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End .slick-single-layout -->
-                <div class="slick-single-layout">
-                    <div class="axil-product product-style-two has-color-pick">
-                        <div class="thumbnail">
-                            <a href="single-product.html">
-                                <img data-sal="fade" data-sal-delay="400" data-sal-duration="1500" src="{{asset('frontend/assets')}}/images/product/fashion/product-13.png" alt="Product Images">
-                            </a>
-                            <div class="label-block label-right">
-                                <div class="product-badget">30% OFF</div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <div class="inner">
-                                <div class="color-variant-wrapper">
-                                    <ul class="color-variant">
-                                        <li class="color-extra-01 active"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-02"><span><span class="color"></span></span>
-                                        </li>
-                                        <li class="color-extra-03"><span><span class="color"></span></span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="title"><a href="single-product.html">Guys Bomber Jacket</a></h5>
-                                <div class="product-price-variant">
-                                    <span class="price old-price">$30</span>
-                                    <span class="price current-price">$20</span>
-                                </div>
-                            </div>
-                            <div class="product-hover-action">
-                                <ul class="cart-action justify-content-center">
-                                    <li class="wishlist"><a href="wishlist.html"><i class="far fa-heart"></i></a></li>
-                                    <li class="select-option"><a href="cart.html">Add to Cart</a></li>
-                                    <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Start Axil Newsletter Area  -->
     <div class="axil-newsletter-area axil-section-gap pt--0">
         <div class="container">
             <div class="etrade-newsletter-wrapper bg_image bg_image--12">
@@ -964,7 +340,6 @@
         </div>
 
     </div>
-
-
     </main>
+    {!! Toastr::message() !!}
 @endsection

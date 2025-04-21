@@ -30,7 +30,7 @@ class ProductController extends Controller
     {
 
         return view('admin.product.index',[
-            'categories' => Category::all(),
+            'allcategories' => Category::all(),
             'sub_categories' => SubCategory::all(),
             'brands' => Brand::all(),
             'units' => Unit::all(),
@@ -95,7 +95,7 @@ class ProductController extends Controller
     {
         return view('admin.product.edit',[
             'product' => $product ,
-            'categories' => Category::all(),
+            'allcategories' => Category::all(),
             'sub_categories' => SubCategory::all(),
             'brands' => Brand::all(),
             'units' => Unit::all(),
@@ -161,5 +161,82 @@ class ProductController extends Controller
         return back()->with('message', $this->message);
     }
 
+    public function categoryStatus($id)
+    {
+        
+        $this->message2 = Category::categoryFeaturedStatus($id);
+        return back()->with('message', $this->message2);
+    }
+    
+
+    public function searchProduct(Request $request)
+    {
+        if (!empty($request->search_string)) {
+            $products = Product::where('name', 'like', '%' . $request->search_string . '%')
+                ->orWhere('selling_price', 'like', '%' . $request->search_string . '%')
+                ->orderBy('id', 'desc')
+                ->paginate(5);
+                
+        
+            if ($products->count() >= 1) {
+                return view('search.search', compact('products'))->render();
+            } else {
+                return response()->json([
+                    'status' => "Nothing_Found",
+                ]);
+            }
+        } 
+        
+    }
+    
+    public function priceFilter(Request $request)
+    {
+        // return $request;
+
+        $products = Product::whereBetween('selling_price',[$request->minPrice,$request->maxPrice])
+        ->orWhereBetween('regular_price',[$request->minPrice,$request->maxPrice])->get();
+        
+        $view= view('frontEnd.product.pricefilter',compact('products'))->render();
+        if($products->count()>=1)
+        {
+            return response()->json([
+                'status'=>'success',
+                'html'=>$view,
+            ]);
+        }
+        else
+        {
+          return response()->json([
+            'status'=>"Not_found",
+            'message'=>"Price Range Product Not Found",
+          ]);  
+        }
+       
+        
+
+    }
+
+    public function sortBy(Request $request)
+{
+    if ($request->sortby == "oldest") {
+        $products = Product::orderBy('created_at', 'asc')->get();
+    }
+    
+    elseif ($request->sortby == "highest_price") {
+        $products = Product::orderBy('selling_price', 'desc')->orderBy('regular_price', 'desc')->get();
+        
+    } 
+    elseif ($request->sortby == "lowest_price") {
+        $products = Product::orderBy('selling_price', 'asc')->orderBy('regular_price', 'asc')->get();
+      
+    } 
+    elseif ($request->sortby == "newest") {
+        $products = Product::latest()->get();
+    }
+
+    return view('frontEnd.product.pricefilter',compact('products'))->render();
+
+    
+}
 
 }

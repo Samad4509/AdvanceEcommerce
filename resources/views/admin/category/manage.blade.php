@@ -32,20 +32,29 @@
                                         <tr>
                                             <th class="wd-15p border-bottom-0">Sl</th>
                                             <th class="wd-15p border-bottom-0">Name</th>
+                                            <th class="wd-15p border-bottom-0">Image</th>
                                             <th class="wd-15p border-bottom-0">Status</th>
                                             <th class="wd-20p border-bottom-0">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($categories as $category )
+                                        @foreach($allcategories as $category )
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$category->name}}</td>
+                                                <td>
+                                                    <img src="{{asset($category->image)}}" alt="" height="50" width="50">
+                                                </td>
                                                 <td>{{$category->status == 1 ? 'Active' : 'Inactive'}}</td>
                                                 <td>
                                                     <a href="{{route('category.edit',$category->id)}}" class="btn btn-primary">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
+                                                    <a href="{{ route('category.updateStatus', $category->id) }}" 
+                                                        class="btn {{ $category->status == 1 ? 'btn-success' : 'btn-warning' }}">
+                                                            <i class="fa fa-circle"></i>
+                                                        </a>
+
                                                     <a href="{{route('category.delete',$category->id)}}" class="btn btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </a>

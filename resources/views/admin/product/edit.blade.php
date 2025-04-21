@@ -37,7 +37,7 @@
                                              <label for="category_id">Category name</label>
                                              <select name="category_id" id="category_id" class="form-control" onchange="getSubCategoryByCategory(this.value)">
                                                  <option value="">Select Category</option>
-                                                 @foreach($categories as $category)
+                                                 @foreach($allcategories as $category)
                                                     <option value="{{$category->id}}" @selected($category->id ==
                                                         $product->category_id) >{{$category->name}}</option>
                                                  @endforeach

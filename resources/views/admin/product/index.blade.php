@@ -35,7 +35,7 @@
                                              <label for="category_id">Category name</label>
                                              <select name="category_id" id="category_id" required class="form-control" onchange="getSubCategoryByCategory(this.value)">
                                                  <option value="" disabled selected>Select Category</option>
-                                                 @foreach($categories as $category)
+                                                 @foreach($allcategories as $category)
                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                  @endforeach
                                              </select>

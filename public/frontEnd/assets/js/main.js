@@ -208,13 +208,13 @@
                 max: 5000,
                 values: [0, 3000],
                 slide: function(event, ui) {
-                    $('#amount').val('$' + ui.values[0] + '  $' + ui.values[1]);
+                    $('#amount').val('৳' + ui.values[0] + '  ৳' + ui.values[1]);
                 }
             });
-            $('#amount').val('$' + $('#slider-range').slider('values', 0) +
-                '  $' + $('#slider-range').slider('values', 1));
+            $('#amount').val('৳' + $('#slider-range').slider('values', 0) +
+                '  ৳' + $('#slider-range').slider('values', 1));
 
-        },
+        },  
 
         quantityRanger: function() {
             $('.pro-qty').prepend('<span class="dec qtybtn">-</span>');

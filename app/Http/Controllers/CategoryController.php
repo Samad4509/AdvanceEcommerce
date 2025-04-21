@@ -13,10 +13,13 @@ class CategoryController extends Controller
 
     public function create(Request $request){
 
+        // return $request;
         $this->validate($request,[
-            'name' => 'required|unique:categories,name|regex:/(^([a-zA-z- & 0-9,()]+)(\d+)?$)/u'
+            'name' => 'required|unique:categories,name|regex:/(^([a-zA-z- & 0-9,()]+)(\d+)?$)/u',
+            'image' => 'required'
         ],[
             'name.required' => 'Field is required',
+            'image.required' => 'Field is required',
             'name.unique' => 'Category Name is Unique'
             ]
         );
@@ -26,8 +29,11 @@ class CategoryController extends Controller
     }
 
     public function manage(){
+
+    //    return $test =Category::all();
+
         return view('admin.category.manage',[
-            'categories' => Category::all()
+            'allcategories' => Category::all()
         ]);
     }
 
@@ -39,9 +45,11 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id){
         $this->validate($request,[
-            'name' => 'required|regex:/(^([a-zA-z- ]+)(\d+)?$)/u'
+            'name' => 'required|regex:/(^([a-zA-z- ]+)(\d+)?$)/u',
+            'image' => 'required'
         ],[
-                'name.required' => 'Field is required'
+                'name.required' => 'Field is required',
+                'image.required' => 'Field is required',
             ]
         );
         Category::updateCategory($request,$id);

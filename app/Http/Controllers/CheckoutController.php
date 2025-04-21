@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Customer;
@@ -18,9 +17,11 @@ class CheckoutController extends Controller
 
     public function index()
     {
+        // dd(Session::all());
         if (Session::get('customer_id'))
         {
             $this->customer = Customer::find(Session::get('customer_id'));
+            
         }
         else
         {
@@ -47,9 +48,11 @@ class CheckoutController extends Controller
 
     public function newOrder(Request $request)
     {
+        // return $request;
         if (Session::get('customer_id'))
         {
             $this->customer = Customer::find(Session::get('customer_id'));
+            
             $this->validate($request, [
                'delivery_address'    => 'required',
             ]);
@@ -81,6 +84,7 @@ class CheckoutController extends Controller
                 Session::put('customer_id',$this->customer->id);
                 Session::put('customer_name',$this->customer->name);
             }
+            
         }
 
         $this->order =  new Order();
@@ -93,7 +97,7 @@ class CheckoutController extends Controller
         $this->order->delivery_address  = $request->delivery_address;
         $this->order->payment_type      = $request->payment_type;
         $this->order->save();
-
+        // return $this->order->id;
         foreach (Cart::content() as $item)
         {
             $this->orderDetail = new OrderDetail();

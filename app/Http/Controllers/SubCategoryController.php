@@ -11,7 +11,7 @@ class SubCategoryController extends Controller
 
     public function index(){
         return view('admin.sub-category.index',[
-            'categories' =>  Category::all()
+            'allcategories' =>  Category::all()
         ]);
     }
     public function create(Request $request){

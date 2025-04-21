@@ -6,18 +6,21 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>eTrade || Home-03</title>
+    <title>@yield('title')</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/assets')}}/images/favicon.png">
+    
 
     <!-- CSS
     ============================================ -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/vendor/font-awesome.css">
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/vendor/flaticon/flaticon.css">
     <link rel="stylesheet" href="{{asset('frontend/assets')}}/css/vendor/slick.css">
@@ -194,80 +197,87 @@
             <div class="card-header">
                 <form action="#">
                     <div class="input-group">
-                        <input type="search" class="form-control" name="prod-search" id="prodSearch" placeholder="ewrtwertwer">
-                        <button type="submit" class="axil-btn btn-bg-primary"><i class="far fa-search"></i></button>
+                        <input type="search" class="form-control" name="prod-search" id="searchBar" placeholder="ewrtwertwer">
+                        
+                    </div>
+                    <div class="col-md-8 mx-auto mt-2">
+                    <div class="search-bar" >
+
+                    </div>
                     </div>
                 </form>
             </div>
-            <div class="card-body">
+            <!-- <div class="card-body">
                 <div class="search-result-header">
                     <h6 class="title"> <span id="searchResultCount">0</span> Result Found</h6>
                     <a href="" class="view-all">View All</a>
                 </div>
                 <div class="psearch-results" id="searchResult">
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <!-- Header Search Modal End -->
 
 
 
-    <div class="cart-dropdown" id="cart-dropdown">
-        <div class="cart-content-wrap">
-            <div class="cart-header">
-                <h2 class="header-title">Cart review</h2>
-                <button class="cart-close sidebar-close"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="cart-body">
-                <ul class="cart-item-list">
-                    @php($sum = 0)
-                    @foreach(Cart::content() as $cartProduct)
-                    <li class="cart-item">
-                        <div class="item-img">
-                            <a href="{{ route('product.details',$cartProduct->id) }}">
-                                <img src="{{asset($cartProduct->options->image)}}" alt="Commodo Blown Lamp"></a>
-                            <button class="close-btn"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="item-content">
-                            <div class="product-rating">
-                                <span class="icon">
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-								<i class="fas fa-star"></i>
-							</span>
-                                <span class="rating-number">(64)</span>
-                            </div>
-                            <h3 class="item-title">
+    <section class="autoload">
+        <div class="cart-dropdown" id="cart-dropdown">
+            <div class="cart-content-wrap">
+                <div class="cart-header">
+                    <h2 class="header-title">Cart review</h2>
+                    <button class="cart-close sidebar-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="cart-body">
+                    <ul class="cart-item-list">
+                        @php($sum = 0)
+                        @foreach(Cart::content() as $cartProduct)
+                        <li class="cart-item">
+                            <div class="item-img">
                                 <a href="{{ route('product.details',$cartProduct->id) }}">
-                                    {{$cartProduct->name}}
-                                </a>
-                            </h3>
-                            <div class="item-price">
-                                <span class="currency-symbol"></span>{{$cartProduct->price}} * {{$cartProduct->qty}}</div>
-                            <div class=" item-quantity">
-                                {{$cartProduct->price * $cartProduct->qty}}
+                                    <img src="{{asset($cartProduct->options->image)}}" alt="Commodo Blown Lamp"></a>
+                                <button class="close-btn"><i class="fas fa-times"></i></button>
                             </div>
-                        </div>
-                    </li>
-                        @php($sum = $sum + ($cartProduct->price * $cartProduct->qty))
-                    @endforeach
-                </ul>
-            </div>
-            <div class="cart-footer">
-                <h3 class="cart-subtotal">
-                    <span class="subtotal-title">Subtotal:</span>
-                    <span class="subtotal-amount">{{$sum}}</span>
-                </h3>
-                <div class="group-btn">
-                    <a href="{{route('cart.show')}}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
-                    <a href="{{route('checkout')}}" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
+                            <div class="item-content">
+                                <div class="product-rating">
+                                    <span class="icon">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </span>
+                                    <span class="rating-number">(64)</span>
+                                </div>
+                                <h3 class="item-title">
+                                    <a href="{{ route('product.details',$cartProduct->id) }}">
+                                        {{$cartProduct->name}}
+                                    </a>
+                                </h3>
+                                <div class="item-price">
+                                    <span class="currency-symbol"></span>{{$cartProduct->price}} * {{$cartProduct->qty}}</div>
+                                <div class=" item-quantity">
+                                    {{$cartProduct->price * $cartProduct->qty}}
+                                </div>
+                            </div>
+                        </li>
+                            @php($sum = $sum + ($cartProduct->price * $cartProduct->qty))
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="cart-footer">
+                    <h3 class="cart-subtotal">
+                        <span class="subtotal-title">Subtotal:</span>
+                        <span class="subtotal-amount">{{$sum}}</span>
+                    </h3>
+                    <div class="group-btn">
+                        <a href="{{route('cart.show')}}" class="axil-btn btn-bg-primary viewcart-btn">View Cart</a>
+                        <a href="{{route('checkout')}}" class="axil-btn btn-bg-secondary checkout-btn">Checkout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 
     <!-- JS
@@ -279,6 +289,7 @@
     <!-- Bootstrap JS -->
     <script src="{{asset('frontend/assets')}}/js/vendor/popper.min.js"></script>
     <script src="{{asset('frontend/assets')}}/js/vendor/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <script src="{{asset('frontend/assets')}}/js/vendor/slick.min.js"></script>
     <script src="{{asset('frontend/assets')}}/js/vendor/js.cookie.js"></script>
     <!-- <script src="{{asset('frontend/assets')}}/js/vendor/jquery.style.switcher.js"></script> -->
@@ -291,14 +302,11 @@
     <script src="{{asset('frontend/assets')}}/js/vendor/isotope.pkgd.min.js"></script>
     <script src="{{asset('frontend/assets')}}/js/vendor/counterup.js"></script>
     <script src="{{asset('frontend/assets')}}/js/vendor/waypoints.min.js"></script>
-
+    
     <!-- Main JS -->
     <script src="{{asset('frontend/assets')}}/js/main.js"></script>
-{{--    <script>--}}
-{{--        var baseURL = {!! json_encode(url('/')) !!}--}}
-{{--    </script>--}}
-    <script src="{{asset('frontend/assets')}}/js/script.js"></script>
 
+    <script src="{{asset('frontend/assets')}}/js/script.js"></script>
     <script>
         @if(Request::is('/'))
         $( window ).on("load", function (){
@@ -320,5 +328,4 @@
 </body>
 
 
-<!-- Mirrored from new.axilthemes.com/demo/template/etrade/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Jul 2023 14:24:23 GMT -->
 </html>

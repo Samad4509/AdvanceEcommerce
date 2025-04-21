@@ -37,10 +37,10 @@ Route::get('/products',[EshopController::class,'products'])->name('products');
 Route::get('/product-details/{id}',[EshopController::class,'productDetails'])->name('product.details');
 Route::get('/category-products/{id}',[EshopController::class,'categoryProducts'])->name('category.products');
 
-Route::get('/direct-add-to-cart/{id}',[CartController::class,'directAddToCart'])->name('cart.direct-add');
+Route::post('/direct-add-to-cart',[CartController::class,'directAddToCart'])->name('cart.direct-add');
 Route::post('/add-to-cart/{id}',[CartController::class,'index'])->name('cart.add');
 Route::get('/shopping-cart',[CartController::class,'show'])->name('cart.show');
-Route::post('/update-shopping-cart/{id}',[CartController::class,'update'])->name('cart.update');
+Route::post('/update-shopping-cart',[CartController::class,'update'])->name('cart.update');
 Route::get('/delete-shopping-cart/{id}',[CartController::class,'delete'])->name('cart.delete');
 
 Route::get('/check-out',[CheckoutController::class,'index'])->name('checkout');
@@ -48,7 +48,9 @@ Route::get('/customer-email-check',[CheckoutController::class,'emailCheck'])->na
 Route::post('/new-order',[CheckoutController::class,'newOrder'])->name('order.new');
 Route::get('/complete-order',[CheckoutController::class,'completeOrder'])->name('order.complete');
 
-
+Route::get('/search',[ProductController::class,'searchProduct'])->name('search.product');
+Route::post('/price-filter',[ProductController::class,'priceFilter'])->name('price.filter');
+Route::post('/sort-by',[ProductController::class,'sortBy'])->name('sort.by');
 
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
 
@@ -79,6 +81,7 @@ Route::resource('user',UserController::class);
 
 Route::get('get-subcategory-by-category',[ProductController::class,'getSubCategoryByCategory'])->name('get-subcategory-by-category');
 Route::get('product/update-status/{id}',[ProductController::class,'updateStatus'])->name('product.updateStatus');
+Route::get('category/category-status/{id}',[ProductController::class,'categoryStatus'])->name('category.updateStatus');
 
 Route::get('admin/manage-order', [AdminOrderController::class, 'index'])->name('admin.manage-order');
 Route::get('admin/order-detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.order-detail');

@@ -2,23 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
-use Cart;
 use Session;
+use App\Models\Product;
+
+use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CartController extends Controller
 {
 
     private $product, $totalCartItem;
 
-    public function directAddToCart($id)
+    public function directAddToCart(Request $request)
     {
-        $this->product = Product::find($id);
+        $this->product = Product::find($request->prod_id);
         Cart::add([
-            'id'    => $id,
+            'id'    => $request->prod_id,
             'name'  => $this->product->name,
-            'qty'   => 1,
+            'qty'   => $request->quantity,
             'price' =>  $this->product->selling_price,
             'options' => [
                 'image' => $this->product->image,
@@ -26,11 +27,16 @@ class CartController extends Controller
                 'brand' => $this->product->brand->name
             ]
         ]);
-        return redirect('/shopping-cart');
+        return response()->json(
+            [
+                'status'=>'success',
+            ]
+        );
     }
 
     public function index(Request $request,$id){
 
+        // return $request;
         $this->product = Product::find($id);
         if($this->product->stock_amount < $request->qty)
         {
@@ -71,21 +77,27 @@ class CartController extends Controller
     }
 
     public function show(){
+        // return Cart::content();
         return view('frontEnd.cart.cart',[
             'cartProducts' => Cart::content()
         ]);
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request){
 
-         $this->product = Product::find($request->p_id);
-        if($this->product->stock_amount < $request->qty){
+        // return $request;
+        $this->product = Product::find($request->prod_id);
+        if($this->product->stock_amount < $request->quantity){
             return back()->with('message','Sorry.. you can purchase maximum Quantity is... '.$this->product->stock_amount);
         }
 
 
-        Cart::update($id, $request->qty);
-        return back()->with('message', 'Cart Product Quantity Update Successfully');
+        Cart::update($request->id, $request->quantity);
+        return response()->json(
+            [
+                'update'=>'success',
+            ]
+        );
     }
 
     public function delete($id){
